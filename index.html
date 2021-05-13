@@ -37,23 +37,20 @@
             if ((Math.round(_num * 2) / 2) == 0.33) {
               return "&frac13;";
             }
-            return "&frac14;";
+            return "&frac12;";
           }
           return Math.round(_num * 2) / 2;
         }
         else if (_num >= 0.25) {
           if (_alpha) {
             if ((Math.round(_num * 4) / 4) == 0.25) {
-              return "&frac14;";
+              return "&frac13;";
             }
             return "&frac12;";
           }
           return Math.round(_num * 4) / 4;
         }
         else if (_alpha) {
-          if ((Math.round(_num * 8) / 8) == 0.125) {
-            return "&frac18;";
-          }
           return "0";
         }
         return Math.round(_num * 8) / 8;
@@ -493,8 +490,8 @@
       #versionInfo
       {
         position:absolute;
-        left:1180px;
-        top:20px;
+        left:680px;
+        top:600px;
         width:640px;
         font-style:italic;
         font-size:0.8em;
@@ -747,7 +744,7 @@
           <td class="header" colspan="6">Calculadora de ND para T20</td>
         </tr>
         <tr>
-          <td class="labelCell" colspan="3"><center>Target CR Range:</center></td>
+          <td class="labelCell" colspan="3"><center>ND Alvo:</center></td>
           <td class="inputCell" id="targetCRCell" colspan="3"><center>
             <select id="targetCR" type="dropdown" onchange="Calculate()">
               <option value="1/4" selected="selected">1/4</option>
@@ -777,12 +774,12 @@
           </td>
         </tr>
         <tr>
-          <td class="subHeader" colspan="4">Creature&nbsp;Stats</td>
-          <td class="subHeader" colspan="2">Creature&nbsp;Traits &amp;&nbsp;Abilities</td>
+          <td class="subHeader" colspan="4">Atributos da Ameaça</td>
+          <td class="subHeader" colspan="2">Habilidades</td>
         </tr>
         <tr>
-          <td class="terHeader" colspan="4">Defensive Ability</td>
-          <td class="tableCell" colspan="2" rowspan="13">
+          <td class="terHeader" colspan="4">Atributos Defensivos</td>
+          <!-- <td class="tableCell" colspan="2" rowspan="13">
             <table class="choiceTable">
               <tbody><tr>
                 <td class="innerCell" colspan="2" title="(The creature has one or more damage resistances relevant to the party's damage sources) +effective HP multiplier, based on Target CR Range)">
@@ -917,7 +914,7 @@
               <tr>
                 <td class="innerCell" id="traitsTutCell" colspan="2" title="Click to learn more."><center><a onclick="popup('traits')">Where are the rest of the traits?</a></center></td>
             </tr></tbody></table>
-          </td>
+          </td> -->
         </tr>
         <tr>
           <td class="labelCell">Defesa:</td>
@@ -956,7 +953,7 @@
           <td class="minorResult" id="defensiveCR" colspan="2">1<br><span class="smallAddendum">(1)</span></td>
         </tr>
         <tr>
-          <td class="terHeader" colspan="4">Offensive Ability</td>
+          <td class="terHeader" colspan="4">Atributos Ofensivos</td>
         </tr>
         <tr>
           <td class="labelCell">Ataque:</td>
@@ -1018,25 +1015,25 @@
           </td>
         </tr>
         <tr>
-          <td class="labelCell">Act. Save DC:</td>
+          <td class="labelCell">CD:</td>
           <td class="inputCell"><input class="numberIn" id="actualSDC" type="number" value="8" onchange="Calculate()" onclick="Calculate()"></td>
-          <td class="labelCell">Eff. Save DC:</td>
+          <td class="labelCell">CD Efetiva:</td>
           <td class="calculatedCell" id="effectiveSDC">8</td>
         </tr>
         <tr>
-          <td class="minorResult" colspan="2">Offensive CR<br>by Dmg/Round:</td>
+          <td class="minorResult" colspan="2">ND Ofensivo<br>por Dano/Rodada:</td>
           <td class="minorResult" id="CRbyDmg" colspan="2">1<br><span class="smallAddendum">(1)</span></td>
         </tr>
         <tr>
-          <td class="minorResult">Expected Attack<br>for Dmg CR:</td>
+          <td class="minorResult">Ataque esp.<br>pelo Dano:</td>
           <td class="minorResult" id="DmgCRAtt">+3<br><span class="smallAddendum">(+0 ND)</span></td>
-          <td id="offensiveCRbyAttLabel">Offensive CR<br>by Attack:</td>
+          <td id="offensiveCRbyAttLabel">ND Ofensivo<br>pelo Ataque:</td>
           <td id="offensiveCRbyAtt">1<br><span class="smallAddendum">(1)</span></td>
         </tr>
         <tr>
-          <td class="minorResult">Exp. Save DC<br>for Dmg CR:</td>
+          <td class="minorResult">CD esp.<br>pelo Dano:</td>
           <td class="minorResult" id="DmgCRSDC">13<br><span class="smallAddendum">(+0 ND)</span></td>
-          <td id="offensiveCRbySDCLabel">Offensive CR<br>by Save DC:</td>
+          <td id="offensiveCRbySDCLabel">ND Ofensivo<br>pelo CD:</td>
           <td id="offensiveCRbySDC">1<br><span class="smallAddendum">(1)</span></td>
         </tr>
         <tr>
@@ -1045,7 +1042,21 @@
         </tr>
       </tbody></table>
       <!-- <div id="tutLink"><center><a onclick="popup('tutorial')" title="Click to learn more">What is this, and how do I use it?</a></center></div> -->
-      <!-- <div id="versionInfo">v.0.9<br>Known Issues:<br><ul><li>Sometimes rounds incorrectly for offensive/defensive CRs less than 1.</li></ul></div> -->
+      <div id="versionInfo">
+        Atribuições
+        <ul>
+          <li>Baseado nos cálculos do <i>Guia não-oficial de criação de criaturas para Tormenta 20</i>, por Rafael Reis.</li>
+          <li>Site original: <a href="https://iadndmn.neocities.org/CRcalc.html" rel="nofollow">CR Calculator</a>, por <a href="https://www.reddit.com/user/ItsADnDMonsterNow" rel="nofollow">/u/ItsADnDMonsterNow</a>.</li>
+        </ul>
+        <br>v.0.5
+        <br>Problemas Conhecidos:
+        <ul>
+          <li>Arredondamentos podem estar incorretos.</li>
+          <li>Habilidades não estão implementadas.</li>
+          <li>Resistências não fazem nada no momento.</li>
+        </ul>
+        <p>Problemas e Sugestões: <a href="https://github.com/mclemente/Calculadora-ND/issues" rel="nofollow">Github</a></p>
+      </div>
       <!-- INPUT TABLE ENDS -->
       <!-- REFERENCE TABLE BEGINS -->
       <table id="referenceTable">
