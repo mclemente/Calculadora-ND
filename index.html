@@ -148,12 +148,12 @@
       function Validate() // Makes sure the current values in all input boxes are within acceptable ranges. If not, set to default
       {
         if (parseInt(document.getElementById("actualAC").value) < 1) { document.getElementById("actualAC").value = 1; }
-        if (parseInt(document.getElementById("savingThrowProficiencyCount").value) < 0) {
-          document.getElementById("savingThrowProficiencyCount").value = 0;
-        }
-        if (parseInt(document.getElementById("savingThrowProficiencyCount").value) > 6) {
-          document.getElementById("savingThrowProficiencyCount").value = 6;
-        }
+        // if (parseInt(document.getElementById("savingThrowProficiencyCount").value) < 0) {
+        //   document.getElementById("savingThrowProficiencyCount").value = 0;
+        // }
+        // if (parseInt(document.getElementById("savingThrowProficiencyCount").value) > 6) {
+        //   document.getElementById("savingThrowProficiencyCount").value = 6;
+        // }
         if (parseInt(document.getElementById("actualHP").value) < 1) { document.getElementById("actualHP").value = 1; }
         if (parseInt(document.getElementById("actualAB").value) < 0) { document.getElementById("actualAB").value = 0; }
         if (parseInt(document.getElementById("pDmg1").value) < 0) { document.getElementById("pDmg1").value = 0; }
@@ -169,8 +169,8 @@
         if (parseInt(document.getElementById("pDmg6").value) < 0) { document.getElementById("pDmg6").value = 0; }
         if (parseInt(document.getElementById("sDmg6").value) < 0) { document.getElementById("sDmg6").value = 0; }
         if (parseInt(document.getElementById("actualSDC").value) < 1) { document.getElementById("actualSDC").value = 1; }
-        if (parseInt(document.getElementById("legendaryResistanceUses").value) < 1) { document.getElementById("legendaryResistanceUses").value = 1; }
-        if (parseInt(document.getElementById("regenerationValue").value) < 1) { document.getElementById("regenerationValue").value = 1; }
+        // if (parseInt(document.getElementById("legendaryResistanceUses").value) < 1) { document.getElementById("legendaryResistanceUses").value = 1; }
+        // if (parseInt(document.getElementById("regenerationValue").value) < 1) { document.getElementById("regenerationValue").value = 1; }
       }
       function Calculate() // Begins main CR calculation
       {
@@ -191,94 +191,94 @@
         //CALCULATE AC — check the 'Actual AC' input and modify it according to all applicable traits, etc., then store & output as 'effective AC'
         var AC = parseInt(document.getElementById("actualAC").value);
         var effAC = document.getElementById("effectiveAC");
-        if (document.getElementById("flySpeedAndRangedAttack").checked && tier <= 2) { AC += 2; }
-        document.getElementById("savingThrowProficiencyCount").disabled = true;
-        if (document.getElementById("savingThrowProficiencies").checked) {
-          document.getElementById("savingThrowProficiencyCount").disabled = false;
-          var saves = parseInt(document.getElementById("savingThrowProficiencyCount").value);
-          if (saves >= 3) { AC += 2; }
-          if (saves >= 5) { AC += 2; }
-        }
-        if (document.getElementById("avoidance").checked) { AC += 1; }
-        if (document.getElementById("constrict").checked) { AC += 1; }
-        if (document.getElementById("magicResistance").checked) { AC += 2; }
-        if (document.getElementById("nimbleEscape").checked) { AC += 4; }
-        if (document.getElementById("parry").checked) { AC += 1; }
-        if (document.getElementById("shadowStealth").checked) { AC += 4; }
-        if (document.getElementById("stench").checked) { AC += 1; }
-        if (document.getElementById("superiorInvisibility").checked) { AC += 2; }
-        if (document.getElementById("web").checked) { AC += 1; }
+        // if (document.getElementById("flySpeedAndRangedAttack").checked && tier <= 2) { AC += 2; }
+        // document.getElementById("savingThrowProficiencyCount").disabled = true;
+        // if (document.getElementById("savingThrowProficiencies").checked) {
+        //   document.getElementById("savingThrowProficiencyCount").disabled = false;
+        //   var saves = parseInt(document.getElementById("savingThrowProficiencyCount").value);
+        //   if (saves >= 3) { AC += 2; }
+        //   if (saves >= 5) { AC += 2; }
+        // }
+        // if (document.getElementById("avoidance").checked) { AC += 1; }
+        // if (document.getElementById("constrict").checked) { AC += 1; }
+        // if (document.getElementById("magicResistance").checked) { AC += 2; }
+        // if (document.getElementById("nimbleEscape").checked) { AC += 4; }
+        // if (document.getElementById("parry").checked) { AC += 1; }
+        // if (document.getElementById("shadowStealth").checked) { AC += 4; }
+        // if (document.getElementById("stench").checked) { AC += 1; }
+        // if (document.getElementById("superiorInvisibility").checked) { AC += 2; }
+        // if (document.getElementById("web").checked) { AC += 1; }
         effAC.innerHTML = AC;
         
         //CALCULATE HP — check the 'actual HP' input and modify it according to applicable traits/tier/etc., then store & output as 'effective HP'
         var HP = parseInt(document.getElementById("actualHP").value);
         var effHP = document.getElementById("effectiveHP");
         var hpMult = 1;   // This variable represents that different HP multipliers should be additive, not multiplicative (i.e. "+100%" and "+100%" equals "+200%", as opposed to "x2" and "x2" equals "x4")
-        switch (tier) {   // check CR "tier", then adjust any modifiers for dmg resistance/immunity accordingly.
-          case 1:
-            if (document.getElementById("damageResistance").checked || document.getElementById("damageImmunity").checked) {
-              hpMult = 2;
-            }
-            break;
-          case 2:
-            if (document.getElementById("damageResistance").checked) {
-              hpMult = 1.5;
-            }
-            if (document.getElementById("damageImmunity").checked) {
-              hpMult = 2;
-            }
-            break;
-          case 3:
-            if (document.getElementById("damageResistance").checked) {
-              hpMult = 1.25;
-            }
-            if (document.getElementById("damageImmunity").checked) {
-              hpMult = 1.5;
-            }
-            break;
-          case 4:
-            if (document.getElementById("damageImmunity").checked) {
-              hpMult = 1.25;
-            }
-            break;
-        }
-        if (document.getElementById("damageTransfer").checked) { hpMult += 1; }
-        if ((document.getElementById("frightfulPresence").checked || document.getElementById("horrifyingVisage").checked) && tier <= 2) { hpMult += 0.25; }    // Frightful Presence and Horrifying Visage are listed in the DMG as having the same effect, and in fact referencing each other. As such, it doesn't make sense for their effects to stack, so just check for either one
-        if (document.getElementById("possession").checked) { hpMult += 1; }
+        // switch (tier) {   // check CR "tier", then adjust any modifiers for dmg resistance/immunity accordingly.
+        //   case 1:
+        //     if (document.getElementById("damageResistance").checked || document.getElementById("damageImmunity").checked) {
+        //       hpMult = 2;
+        //     }
+        //     break;
+        //   case 2:
+        //     if (document.getElementById("damageResistance").checked) {
+        //       hpMult = 1.5;
+        //     }
+        //     if (document.getElementById("damageImmunity").checked) {
+        //       hpMult = 2;
+        //     }
+        //     break;
+        //   case 3:
+        //     if (document.getElementById("damageResistance").checked) {
+        //       hpMult = 1.25;
+        //     }
+        //     if (document.getElementById("damageImmunity").checked) {
+        //       hpMult = 1.5;
+        //     }
+        //     break;
+        //   case 4:
+        //     if (document.getElementById("damageImmunity").checked) {
+        //       hpMult = 1.25;
+        //     }
+        //     break;
+        // }
+        // if (document.getElementById("damageTransfer").checked) { hpMult += 1; }
+        // if ((document.getElementById("frightfulPresence").checked || document.getElementById("horrifyingVisage").checked) && tier <= 2) { hpMult += 0.25; }    // Frightful Presence and Horrifying Visage are listed in the DMG as having the same effect, and in fact referencing each other. As such, it doesn't make sense for their effects to stack, so just check for either one
+        // if (document.getElementById("possession").checked) { hpMult += 1; }
         HP = Math.round(HP * hpMult);   // Once all HP multipliers have been assessed, multiply by 'Actual HP'
-        document.getElementById("legendaryResistanceUses").disabled = true;   // As validation/redundancy, I disable an input, then only re-enable if that input's checkbox is checked
-        if (document.getElementById("legendaryResistance").checked) {
-          document.getElementById("legendaryResistanceUses").disabled = false;
-          var usesPerDay = parseInt(document.getElementById("legendaryResistanceUses").value);
-          switch (tier) {
-            case 1:
-              HP += 10 * usesPerDay;
-              break;
-            case 2:
-              HP += 20 * usesPerDay;
-              break;
-            case 3:
-            case 4:
-              HP += 30 * usesPerDay;
-              break;
-          }
-        }
-        document.getElementById("regenerationValue").disabled = true;
-        if (document.getElementById("regeneration").checked) {
-          document.getElementById("regenerationValue").disabled = false;
-          HP += (3 * parseInt(document.getElementById("regenerationValue").value));
-        }
-        if (document.getElementById("relentless").checked) { HP += (7 * tier); }
-        if (document.getElementById("undeadFortitude").checked) { HP += (7 * tier); }
+        // document.getElementById("legendaryResistanceUses").disabled = true;   // As validation/redundancy, I disable an input, then only re-enable if that input's checkbox is checked
+        // if (document.getElementById("legendaryResistance").checked) {
+        //   document.getElementById("legendaryResistanceUses").disabled = false;
+        //   var usesPerDay = parseInt(document.getElementById("legendaryResistanceUses").value);
+        //   switch (tier) {
+        //     case 1:
+        //       HP += 10 * usesPerDay;
+        //       break;
+        //     case 2:
+        //       HP += 20 * usesPerDay;
+        //       break;
+        //     case 3:
+        //     case 4:
+        //       HP += 30 * usesPerDay;
+        //       break;
+        //   }
+        // }
+        // document.getElementById("regenerationValue").disabled = true;
+        // if (document.getElementById("regeneration").checked) {
+        //   document.getElementById("regenerationValue").disabled = false;
+        //   HP += (3 * parseInt(document.getElementById("regenerationValue").value));
+        // }
+        // if (document.getElementById("relentless").checked) { HP += (7 * tier); }
+        // if (document.getElementById("undeadFortitude").checked) { HP += (7 * tier); }
         effHP.innerHTML = HP;
         
         //CALCULATE ATTACK BONUS
         var attBonus = parseInt(document.getElementById("actualAB").value);
         var effAttBonus = document.getElementById("effectiveAB");
-        if (document.getElementById("ambusher").checked) { attBonus += 1; }
-        if (document.getElementById("bloodFrenzy").checked) { attBonus += 4; }
-        if (document.getElementById("nimbleEscape").checked) { attBonus += 4; }
-        if (document.getElementById("packTactics").checked) { attBonus += 1; }
+        // if (document.getElementById("ambusher").checked) { attBonus += 1; }
+        // if (document.getElementById("bloodFrenzy").checked) { attBonus += 4; }
+        // if (document.getElementById("nimbleEscape").checked) { attBonus += 4; }
+        // if (document.getElementById("packTactics").checked) { attBonus += 1; }
         effAttBonus.innerHTML = "+" + attBonus;
         
         //CALCULATE DMG/ROUND
@@ -287,9 +287,9 @@
         var aggDmg = 0;
         var dmgTransferDmg = 0;
         var rmpgDmg = 0;
-        if (document.getElementById("aggressive").checked) { aggDmg = 2; }
-        if (document.getElementById("damageTransfer").checked) { dmgTransferDmg = Math.floor(parseInt(document.getElementById("actualHP").value) / 3); }
-        if (document.getElementById("rampage").checked) { rmpgDmg = 2; }
+        // if (document.getElementById("aggressive").checked) { aggDmg = 2; }
+        // if (document.getElementById("damageTransfer").checked) { dmgTransferDmg = Math.floor(parseInt(document.getElementById("actualHP").value) / 3); }
+        // if (document.getElementById("rampage").checked) { rmpgDmg = 2; }
         var dmg1 = Math.round(parseInt(document.getElementById("pDmg1").value) + parseInt(document.getElementById("sDmg1").value));
         if (dmg1 > 0) {
           dmg1 += aggDmg + dmgTransferDmg + rmpgDmg;
