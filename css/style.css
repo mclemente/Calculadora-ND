@@ -2,7 +2,7 @@
   position:absolute;
   left:25%;
   top:0px;
-  width:100%;
+  width:75%;
   height:100%;
 }
 #inputTable {
@@ -41,7 +41,7 @@ background-color:#ededed;
   position:absolute;
   left:680px;
   top:600px;
-  width:640px;
+  width:480px;
   font-style:italic;
   font-size:0.8em;
   line-height:1.1em;
