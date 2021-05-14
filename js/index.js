@@ -97,7 +97,7 @@ function ACforHPCR(_hpcr) {
 	return 11 + _hpcr * 2;
 }
 function STforHPCR(_hpcr) {
-	const resistenciasBase = [7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30];
+	const resistenciasBase = [0,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30];
 	if (_hpcr == 0.25) {
 		return 4;
 	}
@@ -197,8 +197,8 @@ function Calculate() { // Begins main CR calculation
 	//CALCULATE AC — check the 'Actual AC' input and modify it according to all applicable traits, etc., then store & output as 'effective AC'
 	var AC = parseInt(document.getElementById("actualAC").value);
 	var effAC = document.getElementById("effectiveAC");
-	/*
 	if (document.getElementById("flySpeedAndRangedAttack").checked && tier <= 2) { AC += 2; }
+	/*
 	document.getElementById("savingThrowProficiencyCount").disabled = true;
 	if (document.getElementById("savingThrowProficiencies").checked) {
 	  document.getElementById("savingThrowProficiencyCount").disabled = false;
@@ -208,7 +208,6 @@ function Calculate() { // Begins main CR calculation
 	}
 	if (document.getElementById("avoidance").checked) { AC += 1; }
 	if (document.getElementById("constrict").checked) { AC += 1; }
-	if (document.getElementById("magicResistance").checked) { AC += 2; }
 	if (document.getElementById("nimbleEscape").checked) { AC += 4; }
 	if (document.getElementById("parry").checked) { AC += 1; }
 	if (document.getElementById("shadowStealth").checked) { AC += 4; }
@@ -225,22 +224,13 @@ function Calculate() { // Begins main CR calculation
 	/*
 	switch (tier) {   // check CR "tier", then adjust any modifiers for dmg resistance/immunity accordingly.
 	  case 1:
-	    if (document.getElementById("damageResistance").checked || document.getElementById("damageImmunity").checked) {
-	      hpMult = 2;
-	    }
 	    break;
 	  case 2:
-	    if (document.getElementById("damageResistance").checked) {
-	      hpMult = 1.5;
-	    }
 	    if (document.getElementById("damageImmunity").checked) {
 	      hpMult = 2;
 	    }
 	    break;
 	  case 3:
-	    if (document.getElementById("damageResistance").checked) {
-	      hpMult = 1.25;
-	    }
 	    if (document.getElementById("damageImmunity").checked) {
 	      hpMult = 1.5;
 	    }
@@ -255,7 +245,15 @@ function Calculate() { // Begins main CR calculation
 	if ((document.getElementById("frightfulPresence").checked || document.getElementById("horrifyingVisage").checked) && tier <= 2) { hpMult += 0.25; }    // Frightful Presence and Horrifying Visage are listed in the DMG as having the same effect, and in fact referencing each other. As such, it doesn't make sense for their effects to stack, so just check for either one
 	if (document.getElementById("possession").checked) { hpMult += 1; }
 	*/
+	document.getElementById("damageResistanceValue").disabled = true;
+	if (document.getElementById("durao").checked) { hpMult += 1; }
+	if (document.getElementById("imunidadeMagia").checked) { hpMult += 1; }
+	if (document.getElementById("presencaMajestosa").checked) { hpMult += 1; }
 	HP = Math.round(HP * hpMult);   // Once all HP multipliers have been assessed, multiply by 'Actual HP'
+	if (document.getElementById("damageResistance").checked) {
+		document.getElementById("damageResistanceValue").disabled = false;
+		HP += parseInt(document.getElementById("damageResistanceValue").value)*6;
+	}
 	/*
 	document.getElementById("legendaryResistanceUses").disabled = true;   // As validation/redundancy, I disable an input, then only re-enable if that input's checkbox is checked
 	if (document.getElementById("legendaryResistance").checked) {
@@ -287,6 +285,11 @@ function Calculate() { // Begins main CR calculation
 	//CALCULATE SAVING THROWS
 	var ST = parseInt(document.getElementById("actualSavingThrows").value);
 	var effST = document.getElementById("effectiveSavingThrows");
+	document.getElementById("magicResistanceValue").disabled = true;
+	if (document.getElementById("magicResistance").checked) {
+		document.getElementById("magicResistanceValue").disabled = false;
+		ST += Math.ceil(parseInt(document.getElementById("magicResistanceValue").value)/2);
+	}
 	effST.innerHTML = ST;
 	
 	//CALCULATE ATTACK BONUS
@@ -393,13 +396,15 @@ function Calculate() { // Begins main CR calculation
 		DCR -= Math.floor(Math.abs(ST - expectedST) / 2);
 		adjST = " (-" + Math.floor(Math.abs(ST - expectedST) / 2) + " ND)"
 	}
-	DCR = DCR/2;
 	if (DCR < 0) { DCR = 0; }
 	
 	document.getElementById("CRbyHP").innerHTML = roundCR(HPCR, true);
 	document.getElementById("HPCRAC").innerHTML = expectedAC + "<br/><span class='smallAddendum'>" + adjAC + "</span>";
 	document.getElementById("HPCRST").innerHTML = expectedST + "<br/><span class='smallAddendum'>" + adjST + "</span>";
 	document.getElementById("defensiveCR").innerHTML = roundCR(DCR, true) + "<br/><span class='smallAddendum'>(" + DCR + ")</span>";
+	if (document.getElementById("curaAcelerada").checked) { DCR += 2; }
+	if (document.getElementById("incorporeo").checked) { DCR += 2; }
+	if (document.getElementById("vulnerabilidade").checked) { DCR -= 2; }
 	
 	//CALCULATE OFFENSIVE CR
 	var dmgCR = OCRbyDmg(modDmg);

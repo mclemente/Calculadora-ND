@@ -18,10 +18,10 @@
           <td class="labelCell" colspan="3"><center>ND Alvo:</center></td>
           <td class="inputCell" id="targetCRCell" colspan="3"><center>
             <select id="targetCR" type="dropdown" onchange="Calculate()">
-              <option value="1/4" selected="selected">1/4</option>
-              <option value="1/3">1/3</option>
-              <option value="1/2">1/2</option>
-              <option value="1">1</option>
+              <option value="1/4">&frac14;</option>
+              <option value="1/3">&frac13;</option>
+              <option value="1/2">&frac12;</option>
+              <option value="1" selected="selected">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -50,142 +50,174 @@
         </tr>
         <tr>
           <td class="terHeader" colspan="4">Atributos Defensivos</td>
-          <!-- <td class="tableCell" colspan="2" rowspan="13">
+          <td class="tableCell" colspan="2" rowspan="13">
             <table class="choiceTable">
-              <tbody><tr>
+              <tbody>
+			  <!-- <tr>
                 <td class="innerCell" colspan="2" title="(The creature has one or more damage resistances relevant to the party's damage sources) +effective HP multiplier, based on Target CR Range)">
-                  <label for="damageResistance"><input id="damageResistance" type="checkbox" onclick="Calculate()">&nbsp;[Damage Resistance(s)]</label>
+                  <label for="damageResistance"><input id="damageResistance" type="checkbox" onclick="Calculate()">[Damage Resistance(s)]</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="(The creature has one or more damage immunities relevant to the party's damage sources) +high effective HP multiplier, based on Target CR Range)">
-                  <label for="damageImmunity"><input id="damageImmunity" type="checkbox" onclick="Calculate()">&nbsp;[Damage Immunity(ies)]</label>
-                </td>
-              </tr>
-              <tr>
-                <td class="innerCell" colspan="2" title="(The creature can fly and attack at range) +2 effective AC if target CR is 10 or less">
-                  <label for="flySpeedAndRangedAttack"><input id="flySpeedAndRangedAttack" type="checkbox" onclick="Calculate()">&nbsp;[Fly Speed And Ranged Attack(s)]</label>
+                  <label for="damageImmunity"><input id="damageImmunity" type="checkbox" onclick="Calculate()">[Damage Immunity(ies)]</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="(The creature has saving throw proficiencies) +2 AC for 3-4 proficiencies, or +4 AC for 5-6 proficiencies">
-                  <label for="savingThrowProficiencies"><input id="savingThrowProficiencies" type="checkbox" onclick="Calculate()">&nbsp;[Save Proficiencies]</label> <input class="smallNumberIn" id="savingThrowProficiencyCount" type="number" value="3" disabled="true" onclick="Calculate()" onchange="Calculate()">
+                  <label for="savingThrowProficiencies"><input id="savingThrowProficiencies" type="checkbox" onclick="Calculate()">[Save Proficiencies]</label> <input class="smallNumberIn" id="savingThrowProficiencyCount" type="number" value="3" disabled="true" onclick="Calculate()" onchange="Calculate()">
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+2 effective damage per round">
-                  <label for="aggressive"><input id="aggressive" type="checkbox" onclick="Calculate()">&nbsp;Aggressive</label>
+                  <label for="aggressive"><input id="aggressive" type="checkbox" onclick="Calculate()">Aggressive</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+1 effective attack bonus">
-                  <label for="ambusher"><input id="ambusher" type="checkbox" onclick="Calculate()">&nbsp;Ambusher</label>
+                  <label for="ambusher"><input id="ambusher" type="checkbox" onclick="Calculate()">Ambusher</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+2 effective AC">
-                  <label for="avoidance"><input id="avoidance" type="checkbox" onclick="Calculate()">&nbsp;Avoidance</label>
+                  <label for="avoidance"><input id="avoidance" type="checkbox" onclick="Calculate()">Avoidance</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+4 effective attack bonus">
-                  <label for="bloodFrenzy"><input id="bloodFrenzy" type="checkbox" onclick="Calculate()">&nbsp;Blood Frenzy</label>
+                  <label for="bloodFrenzy"><input id="bloodFrenzy" type="checkbox" onclick="Calculate()">Blood Frenzy</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+1 effective AC">
-                  <label for="constrict"><input id="constrict" type="checkbox" onclick="Calculate()">&nbsp;Constrict</label>
+                  <label for="constrict"><input id="constrict" type="checkbox" onclick="Calculate()">Constrict</label>
+                </td>
+              </tr> -->
+			  <tr>
+                <td class="innerCell" colspan="2" title="+1 ND final">
+                  <label for="curaAcelerada"><input id="curaAcelerada" type="checkbox" onclick="Calculate()">Cura Acelerada</label>
                 </td>
               </tr>
               <tr>
-                <td class="innerCell" colspan="2" title="x2 effective HP, &#8531; actual HP added as effective damage per round">
-                  <label for="damageTransfer"><input id="damageTransfer" type="checkbox" onclick="Calculate()">&nbsp;Damage&nbsp;Transfer</label>
+                <td class="innerCell" colspan="2" title="Dobra PV efetivo">
+                  <label for="durao"><input id="durao" type="checkbox" onclick="Calculate()">Durão</label>
+                </td>
+              </tr>
+              <tr>
+                <td class="innerCell" colspan="2" title="Dobra PV efetivo">
+                  <label for="imunidadeMagia"><input id="imunidadeMagia" type="checkbox" onclick="Calculate()">Imunidade a Magia</label>
+                </td>
+              </tr>
+              <tr>
+                <td class="innerCell" colspan="2" title="+1 ND final">
+                  <label for="incorporeo"><input id="incorporeo" type="checkbox" onclick="Calculate()">Incorpóreo</label>
+                </td>
+              </tr>
+              <tr>
+                <td class="innerCell" colspan="2" title="Dobra PV efetivo">
+                  <label for="presencaMajestosa"><input id="presencaMajestosa" type="checkbox" onclick="Calculate()">Presença Majestosa</label>
+                </td>
+              </tr>
+			  <tr>
+                <td class="innerCell" colspan="2" title="Soma o valor multiplicado por 6 aos PV Efetivos">
+                  <label for="damageResistance"><input id="damageResistance" type="checkbox" onclick="Calculate()">Resistência a Dano <input class="smallNumberIn" id="damageResistanceValue" type="number" value="2" disabled="true" onclick="Calculate()" onchange="Calculate()"></label>
+                </td>
+              </tr>
+			  <tr>
+                <td class="innerCell" colspan="2" title="Soma metade do bônus à média de Resistências">
+                  <label for="magicResistance"><input id="magicResistance" type="checkbox" onclick="Calculate()">Resistência a Magia <input class="smallNumberIn" id="magicResistanceValue" type="number" value="2" disabled="true" onclick="Calculate()" onchange="Calculate()"></label>
+                </td>
+              </tr>
+              <tr>
+                <td class="innerCell" colspan="2" title="Defesa efetiva +2">
+                  <label for="flySpeedAndRangedAttack"><input id="flySpeedAndRangedAttack" type="checkbox" onclick="Calculate()">Voo + ataques à distância</label>
+                </td>
+              </tr>
+              <tr>
+                <td class="innerCell" colspan="2" title="-1 ND final">
+                  <label for="vulnerabilidade"><input id="vulnerabilidade" type="checkbox" onclick="Calculate()">Vulnerabilidade</label>
+                </td>
+              </tr>
+			<!--
+              <tr>
+                <td class="innerCell" colspan="2" title="+25% effective HP if target CR is 10 or less">
+                  <label for="frightfulPresence"><input id="frightfulPresence" type="checkbox" onclick="Calculate()">Frightful&nbsp;Presence</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+25% effective HP if target CR is 10 or less">
-                  <label for="frightfulPresence"><input id="frightfulPresence" type="checkbox" onclick="Calculate()">&nbsp;Frightful&nbsp;Presence</label>
-                </td>
-              </tr>
-              <tr>
-                <td class="innerCell" colspan="2" title="+25% effective HP if target CR is 10 or less">
-                  <label for="horrifyingVisage"><input id="horrifyingVisage" type="checkbox" onclick="Calculate()">&nbsp;Horrifying&nbsp;Visage</label>
+                  <label for="horrifyingVisage"><input id="horrifyingVisage" type="checkbox" onclick="Calculate()">Horrifying&nbsp;Visage</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCellS" colspan="2" title="+effective HP depending on Target CR Range for each use">
-                  <label for="legendaryResistance"><input id="legendaryResistance" type="checkbox" onclick="Calculate()">&nbsp;Legendary&nbsp;Resist.; uses=</label> <input class="smallNumberIn" id="legendaryResistanceUses" type="number" value="1" disabled="true" onclick="Calculate()" onchange="Calculate()">
+                  <label for="legendaryResistance"><input id="legendaryResistance" type="checkbox" onclick="Calculate()">Legendary&nbsp;Resist.; uses=</label> <input class="smallNumberIn" id="legendaryResistanceUses" type="number" value="1" disabled="true" onclick="Calculate()" onchange="Calculate()">
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+2 effective AC">
-                  <label for="magicResistance"><input id="magicResistance" type="checkbox" onclick="Calculate()">&nbsp;Magic&nbsp;Resistance</label>
+                  <label for="magicResistance"><input id="magicResistance" type="checkbox" onclick="Calculate()">Magic&nbsp;Resistance</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+4 effective AC, +4 effective attack bonus">
-                  <label for="nimbleEscape"><input id="nimbleEscape" type="checkbox" onclick="Calculate()">&nbsp;Nimble&nbsp;Escape</label>
+                  <label for="nimbleEscape"><input id="nimbleEscape" type="checkbox" onclick="Calculate()">Nimble&nbsp;Escape</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+1 effective attack bonus">
-                  <label for="packTactics"><input id="packTactics" type="checkbox" onclick="Calculate()">&nbsp;Pack&nbsp;Tactics</label>
+                  <label for="packTactics"><input id="packTactics" type="checkbox" onclick="Calculate()">Pack&nbsp;Tactics</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+1 effective AC">
-                  <label for="parry"><input id="parry" type="checkbox" onclick="Calculate()">&nbsp;Parry</label>
+                  <label for="parry"><input id="parry" type="checkbox" onclick="Calculate()">Parry</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="x2 effective HP">
-                  <label for="possession"><input id="possession" type="checkbox" onclick="Calculate()">&nbsp;Possession</label>
+                  <label for="possession"><input id="possession" type="checkbox" onclick="Calculate()">Possession</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+2 effective damage per round">
-                  <label for="rampage"><input id="rampage" type="checkbox" onclick="Calculate()">&nbsp;Rampage</label>
-                </td>
-              </tr>
-              <tr>
-                <td class="innerCell" colspan="2" title="+effective HP equal to 3x regeneration amount">
-                  <label for="regeneration"><input id="regeneration" type="checkbox" onclick="Calculate()">&nbsp;Regeneration;&nbsp;value= <input class="smallNumberIn" id="regenerationValue" type="number" value="10" disabled="true" onclick="Calculate()" onchange="Calculate()"></label>
+                  <label for="rampage"><input id="rampage" type="checkbox" onclick="Calculate()">Rampage</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+effective HP depending on Target CR Range">
-                  <label for="relentless"><input id="relentless" type="checkbox" onclick="Calculate()">&nbsp;Relentless</label>
+                  <label for="relentless"><input id="relentless" type="checkbox" onclick="Calculate()">Relentless</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+4 effective AC (assumes that the creature is able to hide each round)">
-                  <label for="shadowStealth"><input id="shadowStealth" type="checkbox" onclick="Calculate()">&nbsp;Shadow Stealth</label>
+                  <label for="shadowStealth"><input id="shadowStealth" type="checkbox" onclick="Calculate()">Shadow Stealth</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+1 effective AC">
-                  <label for="stench"><input id="stench" type="checkbox" onclick="Calculate()">&nbsp;Stench</label>
+                  <label for="stench"><input id="stench" type="checkbox" onclick="Calculate()">Stench</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+2 effective AC">
-                  <label for="superiorInvisibility"><input id="superiorInvisibility" type="checkbox" onclick="Calculate()">&nbsp;Superior Invisibility</label>
+                  <label for="superiorInvisibility"><input id="superiorInvisibility" type="checkbox" onclick="Calculate()">Superior Invisibility</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+effective HP depending on Target CR Range">
-                  <label for="undeadFortitude"><input id="undeadFortitude" type="checkbox" onclick="Calculate()">&nbsp;Undead Fortitude</label>
+                  <label for="undeadFortitude"><input id="undeadFortitude" type="checkbox" onclick="Calculate()">Undead Fortitude</label>
                 </td>
               </tr>
               <tr>
                 <td class="innerCell" colspan="2" title="+1 effective AC">
-                  <label for="web"><input id="web" type="checkbox" onclick="Calculate()">&nbsp;Web</label>
+                  <label for="web"><input id="web" type="checkbox" onclick="Calculate()">Web</label>
                 </td>
               </tr>
-              <tr>
-                <td class="innerCell" id="traitsTutCell" colspan="2" title="Click to learn more."><center><a onclick="popup('traits')">Where are the rest of the traits?</a></center></td>
+              <tr> -->
+                <!-- <td class="innerCell" id="traitsTutCell" colspan="2" title="Click to learn more."><center><a onclick="popup('traits')">Where are the rest of the traits?</a></center></td> -->
             </tr></tbody></table>
-          </td> -->
+          </td>
         </tr>
         <tr>
           <td class="labelCell">Defesa:</td>
@@ -201,9 +233,9 @@
         </tr>
         <tr>
           <td class="labelCell">Resistências:</td>
-          <td class="inputCell"><input class="numberIn" id="actualSavingThrows" type="number" value="4" onchange="Calculate()" onclick="Calculate()"></td>
+          <td class="inputCell"><input class="numberIn" id="actualSavingThrows" type="number" value="7" onchange="Calculate()" onclick="Calculate()"></td>
           <td class="labelCell">Resistências Efetivas:</td>
-          <td class="calculatedCell" id="effectiveSavingThrows">4</td>
+          <td class="calculatedCell" id="effectiveSavingThrows">7</td>
         </tr>
         <tr>
           <td class="minorResult" colspan="2">ND Defensivo<br>pelos PV:</td>
@@ -215,7 +247,7 @@
 		</tr>
 		<tr>
           <td class="minorResult" colspan="2">Resistências Esperadas<br>pelos PV:</td>
-          <td class="minorResult" colspan="2" id="HPCRST">4<br><span class="smallAddendum">(+0 ND)</span></td>
+          <td class="minorResult" colspan="2" id="HPCRST">7<br><span class="smallAddendum">(+0 ND)</span></td>
 		</tr>
         <tr>
           <td class="minorResult" colspan="2">ND Defensivo:</td>
@@ -226,13 +258,13 @@
         </tr>
         <tr>
           <td class="labelCell">Ataque:</td>
-          <td class="inputCell">+<input class="shortNumberIn" id="actualAB" type="number" value="6" onchange="Calculate()" onclick="Calculate()"></td>
+          <td class="inputCell">+<input class="shortNumberIn" id="actualAB" type="number" value="10" onchange="Calculate()" onclick="Calculate()"></td>
           <td class="labelCell">Ataque Efetivo:</td>
-          <td class="calculatedCell" id="effectiveAB">+6</td>
+          <td class="calculatedCell" id="effectiveAB">+10</td>
         </tr>
         <tr>
           <td class="labelCell">Dano por Rodada:</td>
-          <td class="calculatedCell" id="dmgPerRound">5</td>
+          <td class="calculatedCell" id="dmgPerRound">17</td>
           <td class="tableCell" colspan="2">
             <table class="choiceTable">
               <tbody><tr>
@@ -243,9 +275,9 @@
               </tr>
               <tr>
                 <td class="smallLabelCell">1</td>
-                <td class="innerCell"><input class="smallNumberIn" id="pDmg1" type="number" value="5" onchange="Calculate()" onclick="Calculate()"></td>
+                <td class="innerCell"><input class="smallNumberIn" id="pDmg1" type="number" value="17" onchange="Calculate()" onclick="Calculate()"></td>
                 <td class="innerCell"><input class="smallNumberIn" id="sDmg1" type="number" value="0" onchange="Calculate()" onclick="Calculate()"></td>
-                <td class="smallCalculatedCell" id="rndDmg1">5</td>
+                <td class="smallCalculatedCell" id="rndDmg1">17</td>
               </tr>
               <tr>
                 <td class="smallLabelCell">2</td>
@@ -279,15 +311,15 @@
               </tr>
               <tr>
                 <td class="smallCalculatedCell" colspan="3">Média de dano<br> em <span id="nRounds">1 rodada</span>:</td>
-                <td class="smallCalculatedCell" id="avgDmg">10</td>
+                <td class="smallCalculatedCell" id="avgDmg">17</td>
             </tr></tbody></table>
           </td>
         </tr>
         <tr>
           <td class="labelCell">CD:</td>
-          <td class="inputCell"><input class="numberIn" id="actualSDC" type="number" value="8" onchange="Calculate()" onclick="Calculate()"></td>
+          <td class="inputCell"><input class="numberIn" id="actualSDC" type="number" value="12" onchange="Calculate()" onclick="Calculate()"></td>
           <td class="labelCell">CD Efetiva:</td>
-          <td class="calculatedCell" id="effectiveSDC">8</td>
+          <td class="calculatedCell" id="effectiveSDC">12</td>
         </tr>
         <tr>
           <td class="minorResult" colspan="2">ND Ofensivo<br>por Dano/Rodada:</td>
@@ -295,7 +327,7 @@
         </tr>
         <tr>
           <td class="minorResult">Ataque esp.<br>pelo Dano:</td>
-          <td class="minorResult" id="DmgCRAtt">+3<br><span class="smallAddendum">(+0 ND)</span></td>
+          <td class="minorResult" id="DmgCRAtt">+10<br><span class="smallAddendum">(+0 ND)</span></td>
           <td id="offensiveCRbyAttLabel">ND Ofensivo<br>pelo Ataque:</td>
           <td id="offensiveCRbyAtt">1<br><span class="smallAddendum">(1)</span></td>
         </tr>
@@ -317,11 +349,10 @@
           <li>Baseado nos cálculos do <a href="https://raw.githubusercontent.com/mclemente/Calculadora-ND/main/Guia%20de%20ND%20para%20T20.pdf" rel="nofollow">Guia não-oficial de criação de criaturas para Tormenta 20</a>, por Rafael Reis.</li>
           <li>Site original: <a href="https://iadndmn.neocities.org/CRcalc.html" rel="nofollow">CR Calculator</a>, por <a href="https://www.reddit.com/user/ItsADnDMonsterNow" rel="nofollow">/u/ItsADnDMonsterNow</a>.</li>
         </ul>
-        <br>v.0.6
+        <br>v.0.7
         <br>Problemas Conhecidos:
         <ul>
           <li>Arredondamentos podem estar incorretos.</li>
-          <li>Habilidades não estão implementadas.</li>
         </ul>
         <p>Problemas e Sugestões: <a href="https://github.com/mclemente/Calculadora-ND/issues" rel="nofollow">Github</a></p>
       </div>
@@ -344,9 +375,9 @@
           <th class="refSubHeader">CD</th>
           <th class="refSubHeader">Dano<br>/rodada</th>
         </tr>
-        <tr><th>1/4</th><td><8</td><td><4</td><td>1-9</td><td><6</td><td><8</td><td><5</td></tr>
-        <tr><th>1/3</th><td>8-9</td><td>4</td><td>10-29</td><td>6-7</td><td>8-9</td><td>5-8</td></tr>
-        <tr><th>1/2</th><td>10-11</td><td>5</td><td>30-59</td><td>8</td><td>10</td><td>9-12</td></tr>
+        <tr><th>&frac14;</th><td><8</td><td><4</td><td>1-9</td><td><6</td><td><8</td><td><5</td></tr>
+        <tr><th>&frac13;</th><td>8-9</td><td>4</td><td>10-29</td><td>6-7</td><td>8-9</td><td>5-8</td></tr>
+        <tr><th>&frac12;</th><td>10-11</td><td>5</td><td>30-59</td><td>8</td><td>10</td><td>9-12</td></tr>
         <tr><th>1</th><td>12-13</td><td>6-7</td><td>60-94</td><td>9-10</td><td>11-12</td><td>13-18</td></tr>
         <tr><th>2</th><td>14-15</td><td>8</td><td>95-129</td><td>11</td><td>13</td><td>18-22</td></tr>
         <tr><th>3</th><td>16-17</td><td>9</td><td>130-164</td><td>12-13</td><td>14-15</td><td>23-27</td></tr>
